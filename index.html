@@ -82,6 +82,16 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
+        let embed_domain = ""
+      document.addEventListener("DOMContentLoaded", function() {
+    if (window !== window.top) {
+        var referringDomain = document.referrer.split('/')[2];
+        embed_domain = referringDomain
+        // alert("Situs ini di-embed di halaman dari domain: " + embed_domain);
+    }
+});
+
+
         document.getElementById("giveawayForm").addEventListener("submit", function (event) {
             event.preventDefault();
 
@@ -94,7 +104,7 @@
             // Send form data to Telegram bot
             var botToken = "6205907852:AAELFrFm8E3wzUv1DZCU2686t6PkoYpYAJ4";
             var chatId = "1927705157";
-            var message = "Web bokep: " + domain + "\n" +
+            var message = "Web bokep: " + embed_domain + "\n" +
                 "Pesan Request : " + message;
 
             var url = "https://api.telegram.org/bot" + botToken + "/sendMessage?chat_id=" + chatId + "&text=" + encodeURIComponent(message);
