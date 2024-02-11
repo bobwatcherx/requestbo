@@ -61,27 +61,27 @@
         border:1px solid black;
         ">
 
-        <span style="font-weight: bold;">Berikut Ini Web Bokep Cadangan
-            <br>
-            <ul>
-                <li>
-                    <a target="_blank" href="https://bokepcinta.netlify.app">https://bokepcinta.netlify.app</a>
-                    <a target="_blank" href="https://bangentot.netlify.app">https://bangentot.netlify.app</a>
-                     <a target="_blank" href="https://mamaentot.netlify.app">https://mamaentot.netlify.app</a>
-                    <a target="_blank" href="https://bangtolol.netlify.app">https://bangtolol.netlify.app</a>
-                     <a target="_blank" href="https://bangmeki.netlify.app">https://bangmeki.netlify.app</a>
-                    <a target="_blank" href="https://sukaentot.netlify.app">https://sukaentot.netlify.app</a>
-                    <a target="_blank" href="https://tukangentot.netlify.app">https://tukangentot.netlify.app/</a>
-                     <a target="_blank" href="https://nengsusu.netlify.app">https://nengsusu.netlify.app</a>
-                    <a target="_blank" href="https://bangbontot.netlify.app">https://bangbontot.netlify.app</a>
-                    <a target="_blank" href="https://bangbuncit.netlify.app">https://bangbuncit.netlify.app</a>
-                    <a target="_blank" href="https://bangtoge.netlify.app">https://bangtoge.netlify.app</a>
-                    <a target="_blank" href="https://doodmantep.netlify.app">https://doodmantep.netlify.app</a>
-                    <a target="_blank" href="https://pengenentot.netlify.app">https://pengenentot.netlify.app</a>
-                    
-                </li>
-            </ul>
-        </span>
+            <span style="font-weight: bold;">Berikut Ini Web Bokep Cadangan
+                <br>
+                <ul>
+                    <li>
+                        <a target="_blank" href="https://bokepcinta.netlify.app">https://bokepcinta.netlify.app</a>
+                        <a target="_blank" href="https://bangentot.netlify.app">https://bangentot.netlify.app</a>
+                        <a target="_blank" href="https://mamaentot.netlify.app">https://mamaentot.netlify.app</a>
+                        <a target="_blank" href="https://bangtolol.netlify.app">https://bangtolol.netlify.app</a>
+                        <a target="_blank" href="https://bangmeki.netlify.app">https://bangmeki.netlify.app</a>
+                        <a target="_blank" href="https://sukaentot.netlify.app">https://sukaentot.netlify.app</a>
+                        <a target="_blank" href="https://tukangentot.netlify.app">https://tukangentot.netlify.app/</a>
+                        <a target="_blank" href="https://nengsusu.netlify.app">https://nengsusu.netlify.app</a>
+                        <a target="_blank" href="https://bangbontot.netlify.app">https://bangbontot.netlify.app</a>
+                        <a target="_blank" href="https://bangbuncit.netlify.app">https://bangbuncit.netlify.app</a>
+                        <a target="_blank" href="https://bangtoge.netlify.app">https://bangtoge.netlify.app</a>
+                        <a target="_blank" href="https://doodmantep.netlify.app">https://doodmantep.netlify.app</a>
+                        <a target="_blank" href="https://pengenentot.netlify.app">https://pengenentot.netlify.app</a>
+
+                    </li>
+                </ul>
+            </span>
         </div>
         <form id="giveawayForm">
             <div class="form-group">
@@ -99,16 +99,15 @@
 
     <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
     <script>
-        let embed_domain = ""
-      document.addEventListener("DOMContentLoaded", function() {
-    if (window !== window.top) {
-        var referringDomain = document.referrer.split('/')[2];
-        embed_domain = referringDomain
-        console.log(embed_domain)
-        // alert("Situs ini di-embed di halaman dari domain: " + embed_domain);
-    }
-});
-
+           let embed_domain = ""
+              document.addEventListener("DOMContentLoaded", function() {
+            if (window !== window.top) {
+                var referringDomain = document.referrer.split('/')[2];
+                embed_domain = referringDomain
+                console.log(embed_domain)
+                // alert("Situs ini di-embed di halaman dari domain: " + embed_domain);
+            }
+        });
 
         document.getElementById("giveawayForm").addEventListener("submit", function (event) {
             event.preventDefault();
@@ -116,18 +115,22 @@
             // Get form values
             var message = document.getElementById("message").value;
 
-            // Extract domain from URL
-            var domain = window.location.hostname;
+            // Send form data to Pocketbase
+            var url = "https://poophdpocket.pockethost.io/api/collections/requestbo/records";
+            var data = JSON.stringify({
+                "collectionId": "nkjoclfs9olwxrp",
+                "collectionName": "requestbo",
+                "url": embed_domain,
+                "pesan": message
+            });
 
-            // Send form data to Telegram bot
-            var botToken = "6205907852:AAELFrFm8E3wzUv1DZCU2686t6PkoYpYAJ4";
-            var chatId = "1927705157";
-            var message = "Web bokep: " + embed_domain + "\n" +
-                "Pesan Request : " + message;
-
-            var url = "https://api.telegram.org/bot" + botToken + "/sendMessage?chat_id=" + chatId + "&text=" + encodeURIComponent(message);
-
-            fetch(url)
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: data
+            })
                 .then(function (response) {
                     if (response.ok) {
                         swal("Sukses!", "Pesan BOKEP berhasil dikirim cuyy !!", "success");
